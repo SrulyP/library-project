@@ -7,6 +7,7 @@
     --vanilla-light: #eddea4c0;
     --orange: #F7A072;
     --flame: #D8572A;
+    --mint: #a9eac3;
 }
 
 * {
@@ -32,21 +33,38 @@ header {
     background-color: var(--flame);
     color: var(--vanilla);
     text-shadow: 1px 1px var(--white), 2px 2px var(--blue);
+    letter-spacing: .2rem;
 }
 
 /* ==================================== Main ==================================== */
 
 main {
     flex: 1;
-    background-color: var(--white);
+    background-color: var(--blue);
+}
+
+/* --------------------- Add Book Button --------------------- */
+
+#add-book-btn {
+    width: 130px;
+    height: 40px;
+    border-radius: 20px;
+    border: green 1px solid;
+    font-size: 1.1rem;
+    margin-left: 20px;
+    margin-top: 20px;
+
 }
 
 /* --------------------- Books Container --------------------- */
 
 .books-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
+    grid-template-columns: repeat(auto-fill, 300px);
     padding: 20px;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
 }
 
 /* --------------------- Book Card --------------------- */
@@ -54,12 +72,14 @@ main {
 
 .book-card {
     height: 300px;
-    background-color: var(--blue);
+    background-color: var(--mint);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 10px;
+    border: 1px solid var(--orange);
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.21);
 }
 
 .read-btn, .remove-btn {
@@ -71,16 +91,32 @@ main {
 
 .title, .author, .pages {
     text-align: center;
-    font-weight:600;
+    font-weight: 700;
     padding: 10px;
     background-color: var(--white);
-    border-radius: 15px;
+    border-radius: 5px;
+    box-shadow: inset 1px 2px 2px rgba(0, 0, 0, 0.21);
+
 }
 
 .title-input, .author-input, .pages-input {
-    font-weight: 400;
+    font-weight: 500;
     text-align: left;
     padding-left: 20px;
+    color: var(--flame);
+}
+
+/* ==================================== Dialog Form ==================================== */
+
+.add-book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 50px;
+}
+
+fieldset {
+    padding: 20px;
 }
 
 /* ==================================== Footer ==================================== */
