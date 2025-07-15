@@ -1,18 +1,19 @@
-const titleInput = document.querySelector(".title-input");
-const authorInput = document.querySelector(".author-input");
-const pagesInput = document.querySelector(".pages-input");
-
-const addBookBtn = document.querySelector(".add-book-btn");
+const addBookBtn = document.querySelector("#add-book-btn");
 const form = document.querySelector("#add-book-dialog");
-const confirmBtn = form.querySelector("#confirmBtn");
+const formElement = document.querySelector("form");
+const confirmBtn = form.querySelector("#confirm-btn");
+const cancelBtn = form.querySelector("#cancel-btn");
 
 
 addBookBtn.addEventListener("click", () => {
     form.showModal();
 });
 
+cancelBtn.addEventListener("click", () => {
+    form.close();
+});
 
-confirmBtn.addEventListener("click", (event) => {
+formElement.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const title = form.querySelector("#title").value;
@@ -24,8 +25,8 @@ confirmBtn.addEventListener("click", (event) => {
     addBookToLibrary(title, author, pages, read);
     
     form.close();
+    form.reset();
     displayBooks(myLibrary);
-
 });
 
 
