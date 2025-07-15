@@ -1,13 +1,40 @@
+const titleInput = document.querySelector(".title-input");
+const authorInput = document.querySelector(".author-input");
+const pagesInput = document.querySelector(".pages-input");
+
+const addBookBtn = document.querySelector(".add-book-btn");
+const form = document.querySelector("#add-book-dialog");
+const confirmBtn = form.querySelector("#confirmBtn");
+
+addBookBtn.addEventListener("click", () => {
+    form.showModal();
+});
+
+confirmBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    const radioElement = form.querySelector("input[name='read']:checked");
+    form.close(radioElement ? radioElement.value : "default");
+});
+
+
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
-    self.title = title;
-    self.author = author;
-    self.pages = pages;
-    self.read = read;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.id = crypto.randomUUID();
 }
 
 function addBookToLibrary(title, author, pages, read) {
-    title = new Book(title, author, pages, read);
-    myLibrary.push(title);
+    book = new Book(title, author, pages, read);
+    myLibrary.push(book);
+}
+
+
+function displayBooks(library) {
+    for (const book of library) {
+        book.title
+    }
 }
