@@ -17,7 +17,7 @@
         <h2>Books:</h2>
         <button id="add-book-btn">Add Book</button>
         <dialog id="add-book-dialog">
-            <form>
+            <form class="add-book-form">
                 <p>Enter the information for the book you want to add:</p>
                 <div class="form-row">
                     <label for="title">Title</label>
@@ -25,11 +25,11 @@
                 </div>
                 <div class="form-row">
                     <label for="author">Author</label>
-                    <input type="text" name="author" id="author" maxlength="60" minlength="1"">
+                    <input type="text" name="author" id="author" maxlength="60" minlength="1" required>
                 </div>
                 <div class="form-row">
                     <label for="pages">Pages</label>
-                    <input type="number" name="pages" id="pages" min="0" max="5000">
+                    <input type="number" name="pages" id="pages" min="0" max="5000" required>
                 </div>
                 <div class="form-row">
                     <fieldset>
@@ -46,8 +46,8 @@
                     </fieldset>
                 </div>
                 <div>
-                    <button value="cancel" formmethod="dialog">Cancel</button>
-                    <button id="confirm-btn">Confirm</button>
+                    <button id="cancel-btn" value="cancel" formmethod="dialog">Cancel</button>
+                    <button id="confirm-btn" type="submit">Confirm</button>
                 </div>
             </form>
         </dialog>
