@@ -88,7 +88,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid var(--orange);
     box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.21);
 }
@@ -111,10 +111,6 @@ main {
 }
 
 
-.title {
-    overflow: scroll;
-}
-
 .title, .author, .pages {
     text-align: center;
     font-weight: 700;
@@ -122,17 +118,19 @@ main {
     background-color: var(--white);
     border-radius: 5px;
     box-shadow: inset 1px 2px 2px rgba(0, 0, 0, 0.21);
-    height: 100px;
+    height: 65px;
+    overflow: scroll;
 }
 
-.pages {
-    height: 75px;
+.title {
+    height: 80px;
 }
 
 .title-input, .author-input, .pages-input {
     font-weight: 500;
     text-align: left;
     padding-left: 20px;
+    padding-top: 5px;
     color: var(--flame);
 }
 
