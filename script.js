@@ -21,9 +21,10 @@ formElement.addEventListener("submit", (event) => {
     const title = form.querySelector("#title").value;
     const author = form.querySelector("#author").value;
     const pages = form.querySelector("#pages").value;
+    const year = form.querySelector("#year").value;
     const read = form.querySelector("input[name='read']:checked");
 
-    addBookToLibrary(title, author, pages, read);
+    addBookToLibrary(title, author, pages, year, read);
     
     form.close();
     formElement.reset();
@@ -34,20 +35,21 @@ formElement.addEventListener("submit", (event) => {
 
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, year, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.year = year;
     this.read = read;
     this.id = crypto.randomUUID();
 }
 
 // ========================= Add Book =========================
 
-function addBookToLibrary(title, author, pages, read) {
+function addBookToLibrary(title, author, pages, year, read) {
     title = title.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
     author = author.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
-    let book = new Book(title, author, pages, read);
+    let book = new Book(title, author, pages, year, read);
     myLibrary.push(book);
 }
 
@@ -73,6 +75,7 @@ function displayBooks(library) {
         bookCardCopy.querySelector(".title-input").textContent = book.title;
         bookCardCopy.querySelector(".author-input").textContent = book.author;
         bookCardCopy.querySelector(".pages-input").textContent = book.pages;
+        bookCardCopy.querySelector(".year-input").textContent = book.year;
         if (book.read == "yes-read") {
             bookCardCopy.querySelector(".read-btn").textContent = "Read"
         } else {
@@ -102,11 +105,11 @@ function displayBooks(library) {
 
 // ========================= Example Books =========================
 
-const firstBook = new Book ("The Lighting Thief", "Rick Riordan", 370, 'yes-read');
-const secondBook = new Book ("Jane Eyre", "Charlotte Brontë", 571, 'no-read');
-const thirdBook = new Book ("Alice in Wonderland", "Lewis Carroll", 192, 'yes-read');
-const fourthBook = new Book ("Twenty Thousand Leagues Under the Sea", "Jules Verne", 270, 'no-read');
-const fifthBook = new Book ("Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae quod illum eius, consectetur aut, voluptatibus sapiente recusandae amet fugiat totam quam ipsam quae nihil, architecto eligendi officia. Pariatur modi, sit atque tempore, magnam dolor dolores iure quae labore adipisci nobis. Qui quod veritatis distinctio totam quibusdam fugiat fugit. Quae voluptatum reprehenderit, inventore veritatis ducimus accusantium, nostrum provident molestiae aliquam possimus hic! Deleniti animi quibusdam reiciendis voluptatum exercitationem architecto assumenda, cupiditate, sed, numquam quaerat a praesentium laudantium iste amet iure accusantium.", "Lorem Ipsum", 980, 'no-read');
+const firstBook = new Book ("The Lighting Thief", "Rick Riordan", 370, "June 28, 2005", 'yes-read');
+const secondBook = new Book ("Jane Eyre", "Charlotte Brontë", 571, "October 19, 1847", 'no-read');
+const thirdBook = new Book ("Alice in Wonderland", "Lewis Carroll", 192, "July 4, 1865", 'yes-read');
+const fourthBook = new Book ("Twenty Thousand Leagues Under the Sea", "Jules Verne", 270, "March, 1869", 'no-read');
+const fifthBook = new Book ("Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae quod illum eius, consectetur aut, voluptatibus sapiente recusandae amet fugiat totam quam ipsam quae nihil, architecto eligendi officia. Pariatur modi, sit atque tempore, magnam dolor dolores iure quae labore adipisci nobis. Qui quod veritatis distinctio totam quibusdam fugiat fugit. Quae voluptatum reprehenderit, inventore veritatis ducimus accusantium, nostrum provident molestiae aliquam possimus hic! Deleniti animi quibusdam reiciendis voluptatum exercitationem architecto assumenda, cupiditate, sed, numquam quaerat a praesentium laudantium iste amet iure accusantium.", "Lorem Ipsum", 980, "January 10, 1920",'no-read');
 
 
 myLibrary.push(firstBook);
