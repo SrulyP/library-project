@@ -6,14 +6,26 @@ const addBookBtn = document.querySelector(".add-book-btn");
 const form = document.querySelector("#add-book-dialog");
 const confirmBtn = form.querySelector("#confirmBtn");
 
+
 addBookBtn.addEventListener("click", () => {
     form.showModal();
 });
 
+
 confirmBtn.addEventListener("click", (event) => {
     event.preventDefault();
+
+    const title = form.querySelector("#title").value;
+    const author = form.querySelector("#author").value;
+    const pages = form.querySelector("#pages").value;
     const radioElement = form.querySelector("input[name='read']:checked");
-    form.close(radioElement ? radioElement.value : "default");
+    const read = radioElement ? radioElement.value : "no-read";
+
+    addBookToLibrary(title, author, pages, read);
+    
+    form.close();
+    displayBooks(myLibrary);
+
 });
 
 
