@@ -21,8 +21,7 @@ formElement.addEventListener("submit", (event) => {
     const title = form.querySelector("#title").value;
     const author = form.querySelector("#author").value;
     const pages = form.querySelector("#pages").value;
-    const radioElement = form.querySelector("input[name='read']:checked");
-    const read = radioElement ? radioElement.value : "no-read";
+    const read = form.querySelector("input[name='read']:checked");
 
     addBookToLibrary(title, author, pages, read);
     
@@ -74,25 +73,46 @@ function displayBooks(library) {
         bookCardCopy.querySelector(".title-input").textContent = book.title;
         bookCardCopy.querySelector(".author-input").textContent = book.author;
         bookCardCopy.querySelector(".pages-input").textContent = book.pages;
+        if (book.read == "yes-read") {
+            bookCardCopy.querySelector(".read-btn").textContent = "Read"
+        } else {
+            bookCardCopy.querySelector(".read-btn").textContent = "Have Not Read"
+        }
+        
+
         const removeButton = bookCardCopy.querySelector(".remove-btn");
         removeButton.addEventListener("click", () => {
             removeBook(book.id);
         });
+
+        const readButton = bookCardCopy.querySelector(".read-btn");
+        readButton.addEventListener("click", () => {
+            if (book.read === "no-read") {
+                book.read = "yes-read";
+                readButton.textContent = 'Read';
+            } else {
+                book.read = "no-read";
+                readButton.textContent = 'Have Not Read';
+            }
+        });
+
         booksContainer.appendChild(bookCardCopy);
     }
 }
 
 // ========================= Example Books =========================
 
-const firstBook = new Book ("The Lighting Thief", "Rick Riordan", 370);
-const secondBook = new Book ("Jane Eyre", "Charlotte Brontë", 571);
-const thirdBook = new Book ("Alice in Wonderland", "Lewis Carroll", 192);
-const fourthBook = new Book ("Twenty Thousand Leagues Under the Sea", "Jules Verne", 270);
+const firstBook = new Book ("The Lighting Thief", "Rick Riordan", 370, 'yes-read');
+const secondBook = new Book ("Jane Eyre", "Charlotte Brontë", 571, 'no-read');
+const thirdBook = new Book ("Alice in Wonderland", "Lewis Carroll", 192, 'yes-read');
+const fourthBook = new Book ("Twenty Thousand Leagues Under the Sea", "Jules Verne", 270, 'no-read');
+const fifthBook = new Book ("Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae quod illum eius, consectetur aut, voluptatibus sapiente recusandae amet fugiat totam quam ipsam quae nihil, architecto eligendi officia. Pariatur modi, sit atque tempore, magnam dolor dolores iure quae labore adipisci nobis. Qui quod veritatis distinctio totam quibusdam fugiat fugit. Quae voluptatum reprehenderit, inventore veritatis ducimus accusantium, nostrum provident molestiae aliquam possimus hic! Deleniti animi quibusdam reiciendis voluptatum exercitationem architecto assumenda, cupiditate, sed, numquam quaerat a praesentium laudantium iste amet iure accusantium.", "Lorem Ipsum", 980, 'no-read');
 
 
 myLibrary.push(firstBook);
 myLibrary.push(secondBook);
 myLibrary.push(thirdBook);
 myLibrary.push(fourthBook);
+myLibrary.push(fifthBook);
 
 displayBooks(myLibrary);
