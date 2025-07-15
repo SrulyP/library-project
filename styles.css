@@ -41,3 +41,39 @@ footer {
     background-color: var(--vanilla-light);
     color: var(--flame);
 }
+
+.books-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
+}
+
+.book-card {
+    height: 300px;
+    background-color: var(--blue);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.read-btn, .remove-btn {
+    width: 120px;
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+}
+
+.title, .author, .pages {
+    text-align: center;
+    font-weight:600;
+    padding: 10px;
+    background-color: var(--white);
+    border-radius: 15px;
+}
+
+.title-input, .author-input, .pages-input {
+    font-weight: 400;
+    text-align: left;
+    padding-left: 20px;
+}
