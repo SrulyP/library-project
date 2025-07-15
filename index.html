@@ -16,6 +16,42 @@
 
         <h2>Books:</h2>
         <button class="add-book-btn">Add Book</button>
+        <dialog id="add-book-dialog">
+            <form>
+                <p>Enter the information for the book you want to add:</p>
+                <div class="form-row">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" maxlength="60" minlength="1" required> 
+                </div>
+                <div class="form-row">
+                    <label for="author">Author</label>
+                    <input type="text" name="author" id="author" maxlength="60" minlength="1"">
+                </div>
+                <div class="form-row">
+                    <label for="pages">Pages</label>
+                    <input type="number" name="pages" id="pages" min="0" max="5000">
+                </div>
+                <div class="form-row">
+                    <fieldset>
+                        <legend>Have you read the book?</legend>
+                        <div class="radio-option">
+                            <input type="radio" name="read" id="yes-read" value="yes-read" checked>
+                            <label for="yes-read">I have read the book</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="read" id="no-read" value="no-read">
+                            <label for="no-read">I have not read the book</label>
+                        </div>
+                    </fieldset>
+                </div>
+                <div>
+                    <button value="cancel" formmethod="dialog">Cancel</button>
+                    <button id="confirmBtn" value="default">Confirm</button>
+                </div>
+            </form>
+        </dialog>
+
+
         <div class="books-container">
             <div class="book-card">
                 <div class="title">Title: <div class="title-input">Example Title</div></div>
