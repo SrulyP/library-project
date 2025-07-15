@@ -44,6 +44,21 @@ function Book(title, author, pages, year, read) {
     this.id = crypto.randomUUID();
 }
 
+// ========================= Change Year Format =========================
+
+
+function changeDateFormat(dateInput) {
+    const date = new Date(dateInput);
+    
+    const options = { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    };
+    
+    return date.toLocaleDateString('en-US', options);
+}
+
 // ========================= Add Book =========================
 
 function addBookToLibrary(title, author, pages, year, read) {
@@ -75,7 +90,8 @@ function displayBooks(library) {
         bookCardCopy.querySelector(".title-input").textContent = book.title;
         bookCardCopy.querySelector(".author-input").textContent = book.author;
         bookCardCopy.querySelector(".pages-input").textContent = book.pages;
-        bookCardCopy.querySelector(".year-input").textContent = book.year;
+        bookCardCopy.querySelector(".year-input").textContent = changeDateFormat(book.year);
+
         if (book.read == "yes-read") {
             bookCardCopy.querySelector(".read-btn").textContent = "Read"
         } else {
