@@ -60,11 +60,11 @@ main {
 }
 
 #add-book-btn:hover {
-    background-color: var(--vanilla);    
+    background-color: var(--orange);    
 }
 
 #add-book-btn:active {
-    background-color: var(--orange);    
+    background-color: var(--flame);    
 }
 
 
@@ -99,16 +99,17 @@ main {
     min-height: 30px;
     border-radius: 15px;
     border: none;
-    background-color: var();    
+    background-color: var(--vanilla-light);  
+    font-weight: 500;
     border: 1px solid green;
 }
 
 .read-btn:hover, .remove-btn:hover {
-    background-color: var(--vanilla);    
+    background-color: var(--orange);    
 }
 
 .read-btn:active, .remove-btn:active {
-    background-color: var(--orange);    
+    background-color: var(--flame);    
 }
 
 .buttons {
