@@ -27,7 +27,7 @@ formElement.addEventListener("submit", (event) => {
     addBookToLibrary(title, author, pages, read);
     
     form.close();
-    form.reset();
+    formElement.reset();
     displayBooks(myLibrary);
 });
 
@@ -40,13 +40,25 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.id = crypto.randomUUID();
 }
 
 // ========================= Add Book =========================
 
 function addBookToLibrary(title, author, pages, read) {
+    title = title.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
+    author = author.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
+}
+
+// ========================= Remove Book =========================
+
+function removeBook(bookID) {
+    const bookIndex = myLibrary.findIndex(book => book.id === bookID);
+    myLibrary.splice(bookIndex, 1);
+    displayBooks(myLibrary);
+
 }
 
 // ========================= Display Books =========================
@@ -60,8 +72,27 @@ function displayBooks(library) {
     for (const book of library) {
         let bookCardCopy = bookCard.cloneNode(true);
         bookCardCopy.querySelector(".title-input").textContent = book.title;
-        bookCardCopy.querySelector(".author-input").textContent = book.title;
-        bookCardCopy.querySelector(".pages-input").textContent = book.title;
+        bookCardCopy.querySelector(".author-input").textContent = book.author;
+        bookCardCopy.querySelector(".pages-input").textContent = book.pages;
+        const removeButton = bookCardCopy.querySelector(".remove-btn");
+        removeButton.addEventListener("click", () => {
+            removeBook(book.id);
+        });
         booksContainer.appendChild(bookCardCopy);
     }
 }
+
+// ========================= Example Books =========================
+
+const firstBook = new Book ("The Lighting Thief", "Rick Riordan", 370);
+const secondBook = new Book ("Jane Eyre", "Charlotte Brontë", 571);
+const thirdBook = new Book ("Alice in Wonderland", "Lewis Carroll", 192);
+const fourthBook = new Book ("Twenty Thousand Leagues Under the Sea", "Jules Verne", 270);
+
+
+myLibrary.push(firstBook);
+myLibrary.push(secondBook);
+myLibrary.push(thirdBook);
+myLibrary.push(fourthBook);
+
+displayBooks(myLibrary);
