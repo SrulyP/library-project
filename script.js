@@ -1,3 +1,5 @@
+// ========================= Form =========================
+
 const addBookBtn = document.querySelector("#add-book-btn");
 const form = document.querySelector("#add-book-dialog");
 const formElement = document.querySelector("form");
@@ -29,6 +31,7 @@ formElement.addEventListener("submit", (event) => {
     displayBooks(myLibrary);
 });
 
+// ========================= Book Constructor =========================
 
 const myLibrary = [];
 
@@ -37,17 +40,28 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.id = crypto.randomUUID();
 }
 
+// ========================= Add Book =========================
+
 function addBookToLibrary(title, author, pages, read) {
-    book = new Book(title, author, pages, read);
+    let book = new Book(title, author, pages, read);
     myLibrary.push(book);
 }
 
+// ========================= Display Books =========================
+
+const booksContainer = document.querySelector(".books-container");
+const bookCard = document.querySelector(".book-card");
+
 
 function displayBooks(library) {
+    booksContainer.innerHTML = '';
     for (const book of library) {
-        book.title
+        let bookCardCopy = bookCard.cloneNode(true);
+        bookCardCopy.querySelector(".title-input").textContent = book.title;
+        bookCardCopy.querySelector(".author-input").textContent = book.title;
+        bookCardCopy.querySelector(".pages-input").textContent = book.title;
+        booksContainer.appendChild(bookCardCopy);
     }
 }
