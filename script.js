@@ -135,3 +135,65 @@ myLibrary.push(fourthBook);
 myLibrary.push(fifthBook);
 
 displayBooks(myLibrary);
+
+
+
+
+let book = {
+    myLibrary: [firstBook, secondBook, thirdBook, fourthBook, fifthBook],
+    init: function () {
+        this.cacheDom();
+        this.bindEvents();
+        this.render();
+    },
+
+    cacheDom: function () {
+        addBookBtn = document.querySelector("#add-book-btn");
+        form = document.querySelector("#add-book-dialog");
+        formElement = document.querySelector("form");
+        confirmBtn = form.querySelector("#confirm-btn");
+        cancelBtn = form.querySelector("#cancel-btn");
+        title = form.querySelector("#title").value;
+        author = form.querySelector("#author").value;
+        pages = form.querySelector("#pages").value;
+        year = form.querySelector("#year").value;
+        read = form.querySelector("input[name='read']:checked");
+    },
+
+    bindEvents: function () {
+        addBookBtn.addEventListener("click", () => form.showModal());
+        cancelBtn.addEventListener("click",() => form.close());
+        formElement.addEventListener("submit", (event) => {
+            event.preventDefault();
+                title = form.querySelector("#title").value;
+                author = form.querySelector("#author").value;
+                pages = form.querySelector("#pages").value;
+                year = form.querySelector("#year").value;
+                read = form.querySelector("input[name='read']:checked");
+
+    addBookToLibrary(title, author, pages, year, read);
+    
+    form.close();
+    formElement.reset();
+    displayBooks(myLibrary);
+});
+    },
+
+    render: function () {
+
+    },
+
+    addBook: function () {
+
+    },
+
+    removeBook: function () {
+
+    },
+
+    capitalize: function (string) {
+        string.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
+    }
+    
+
+}
