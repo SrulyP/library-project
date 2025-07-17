@@ -172,3 +172,112 @@ footer {
     background-color: var(--vanilla-light);
     color: var(--flame);
 }
+
+/* ==================================== Dialog Modal ==================================== */
+
+#add-book-dialog {
+    border: none;
+    border-radius: 15px;
+    padding: 0;
+    box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.3);
+    background-color: var(--white);
+    max-width: 500px;
+    width: 90%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* --------------------- Form Container --------------------- */
+
+.add-book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    background-color: var(--white);
+    border-radius: 15px;
+}
+
+.add-book-form p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--flame);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* --------------------- Form Rows --------------------- */
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-row label {
+    font-weight: 600;
+    color: var(--flame);
+    margin-bottom: 5px;
+}
+
+.form-row input[type="text"], .form-row input[type="number"], .form-row input[type="date"] {
+    padding: 10px;
+    border-radius: 10px;
+    border: transparent;
+    background-color: var(--vanilla-light);
+    font-size: 1rem;
+}
+
+
+/* --------------------- Fieldset and Radio Options --------------------- */
+
+fieldset {
+    border-radius: 10px;
+    padding: 15px;
+    background-color: var(--vanilla-light);
+    border: transparent;
+}
+
+legend {
+    font-weight: 600;
+    color: var(--flame);
+}
+
+.radio-option {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.radio-option input[type="radio"] {
+    accent-color: var(--flame);
+}
+
+/* --------------------- Form Buttons --------------------- */
+
+.confirm-cancel-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+#cancel-btn, #confirm-btn {
+    flex: 1;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid green;
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: var(--vanilla-light);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+#cancel-btn:hover, #confirm-btn:hover {
+    background-color: var(--orange);
+}
+
+#cancel-btn:active, #confirm-btn:active {
+    background-color: var(--flame);
+}
