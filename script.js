@@ -112,9 +112,11 @@ const libraryApp = {
     },
 
     removeBook: function(bookID) {
-        const bookIndex = myLibrary.findIndex(book => book.id === bookID);
-        myLibrary.splice(bookIndex, 1);
-        displayBooks(myLibrary);
+        const bookIndex = this.myLibrary.findIndex(book => book.id === bookID);
+        if (bookIndex !== -1) {
+            this.myLibrary.splice(bookIndex, 1);
+            this.render(); 
+        }
     },
 
     capitalize: function(string) {
