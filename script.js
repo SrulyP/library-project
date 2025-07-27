@@ -97,7 +97,7 @@ const libraryApp = {
                 buttons.readButton.textContent = 'Read';
             } else {
                 book.read = "no-read";
-                buttons.readButton.textContent = 'Have Not Read';
+                buttons.readButton.textContent = 'Not Read';
             }
             this.saveToStorage();
         });
