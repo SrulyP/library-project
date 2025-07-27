@@ -20,13 +20,45 @@ const fifthBook = new Book("Lorem ipsum dolor, sit amet consectetur adipisicing 
 // ========================= Library App =========================
 
 const libraryApp = {
-    myLibrary: [firstBook, secondBook, thirdBook, fourthBook, fifthBook],
+    myLibrary: [],
+    storageKey: 'libraryBooks',
     
     init: function() {
+        this.loadFromStorage();
         this.cacheDom();
         this.bindEvents();
         this.render();
     },
+
+// ========================= localStorage Methods =========================
+    
+    loadFromStorage: function() {
+        const storedBooks = localStorage.getItem(this.storageKey);
+        if (storedBooks) {
+            const parsedBooks = JSON.parse(storedBooks);
+            this.myLibrary = parsedBooks.map(bookData => {
+                const book = new Book(bookData.title, bookData.author, bookData.pages, bookData.year, bookData.read);
+                book.id = bookData.id;
+                return book;
+            });
+        } else {
+            // If there are no stored books, use example books
+            this.myLibrary = [firstBook, secondBook, thirdBook, fourthBook, fifthBook];
+            this.saveToStorage();
+        }
+    },
+
+    saveToStorage: function() {
+        localStorage.setItem(this.storageKey, JSON.stringify(this.myLibrary));
+    },
+
+    clearStorage: function() {
+        localStorage.removeItem(this.storageKey);
+        this.myLibrary = [];
+        this.render();
+    },
+
+    // ========================= Original Methods =========================
 
     cacheDom: function() {
         this.addBookBtn = document.querySelector("#add-book-btn");
@@ -67,6 +99,7 @@ const libraryApp = {
                 book.read = "no-read";
                 buttons.readButton.textContent = 'Have Not Read';
             }
+            this.saveToStorage();
         });
     },
     
@@ -109,12 +142,14 @@ const libraryApp = {
         author = this.capitalize(author);
         const book = new Book(title, author, pages, year, read);
         this.myLibrary.push(book);
+        this.saveToStorage();
     },
 
     removeBook: function(bookID) {
         const bookIndex = this.myLibrary.findIndex(book => book.id === bookID);
         if (bookIndex !== -1) {
             this.myLibrary.splice(bookIndex, 1);
+            this.saveToStorage();
             this.render(); 
         }
     },
