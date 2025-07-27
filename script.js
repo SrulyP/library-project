@@ -129,7 +129,7 @@ const libraryApp = {
             if (book.read === "yes-read") {
                 bookCardCopy.querySelector(".read-btn").textContent = "Read";
             } else {
-                bookCardCopy.querySelector(".read-btn").textContent = "Have Not Read";
+                bookCardCopy.querySelector(".read-btn").textContent = "Not Read";
             }
             
             this.innerBindEvents(buttons, book);
