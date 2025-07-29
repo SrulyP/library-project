@@ -21,8 +21,8 @@ html, body {
     display: flex;
     flex-direction: column;
     height: 100%;
-
 }
+
 /* ==================================== Header ==================================== */
 
 header {
@@ -67,7 +67,6 @@ main {
     background-color: var(--flame);    
 }
 
-
 /* --------------------- Books Container --------------------- */
 
 .books-container {
@@ -81,27 +80,62 @@ main {
 
 /* --------------------- Book Card --------------------- */
 
-
 .book-card {
-    height: 340px;
     background-color: var(--mint);
-    border-radius: 15px;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    padding: 15px;
+    gap: 12px;
+    padding: 18px 20px;
     border: 1px solid var(--orange);
-    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.21);
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.15);
+}
+
+.book-card p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(107, 40, 16)
+}
+
+.title, .author, .pages, .year {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.title-input, .author-input, .pages-input, .year-input {
+    background-color: var(--white);
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.12);
+    color: var(--flame);
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.title-input {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.pages-and-year {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
 }
 
 .read-btn, .remove-btn {
-    width: 120px;
-    min-height: 30px;
-    border-radius: 15px;
+    height: 40px;
+    font-size: 1rem;
+    border-radius: 18px;
     border: none;
     background-color: var(--vanilla-light);  
     font-weight: 500;
     border: 1px solid green;
+    padding: 0 12px;
 }
 
 .read-btn:hover, .remove-btn:hover {
@@ -115,42 +149,10 @@ main {
 .buttons {
     display: flex;
     justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
 }
 
-.title, .author, .pages-and-year {
-    text-align: left;
-    font-weight: 700;
-    padding-bottom: 10px;
-}
-
-.pages-and-year {
-    display: flex;
-    gap: 40px;
-}
-.pages {
-    flex-grow: 1;
-}
-
-.title-input, .author-input, .pages-input, .year-input {
-    text-align: center;
-    padding: 10px;
-    background-color: var(--white);
-    border-radius: 8px;
-    box-shadow: inset 1px 2px 2px rgba(0, 0, 0, 0.21);
-    height: 45px;
-    overflow: scroll;
-    margin-top: 10px;
-    font-weight: 500;
-    text-align: left;
-    padding-left: 10px;
-    padding-top: 10px;
-    color: var(--flame);
-}
-
-
-.title-input {
-    height: 60px;
-}
 
 /* ==================================== Dialog Form ==================================== */
 
@@ -222,14 +224,15 @@ footer {
     margin-bottom: 5px;
 }
 
-.form-row input[type="text"], .form-row input[type="number"], .form-row input[type="date"] {
+.form-row input[type="text"],
+.form-row input[type="number"],
+.form-row input[type="date"] {
     padding: 10px;
     border-radius: 10px;
     border: transparent;
     background-color: var(--vanilla-light);
     font-size: 1rem;
 }
-
 
 /* --------------------- Fieldset and Radio Options --------------------- */
 
